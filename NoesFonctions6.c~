@@ -126,12 +126,15 @@ void joueHumainHumain()
                    
 	do
 	{ 
-		if((tour%2)==0)
-			tourJoueur(p,1);    
-		else 
-			tourJoueur(p,2);
-		tour++;
-	}while(!partieTerminee(p));
+		if( (tour%2)==0 )
+				tourJoueur(p,1);    
+          else tourJoueur(p,2);
+          tour++;      
+
+       } 
+        while(!partieTerminee(p));
+     
+
 
         printf("\n\n\n\n La Partie est terminee !\n");
         comptePions(p,&Point1,&Point2);

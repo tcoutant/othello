@@ -1,5 +1,12 @@
-#include<stdio.h>
-#define N 8
+
+int coupValide(int joueur, plateau p, int NumLigne, int NumColonne)
+{
+   
+   return(faitPrise(joueur,p,NumLigne,NumColonne)
+            && (renvoieContenuCase(p,NumLigne,NumColonne)==0));
+}
+
+
 
 
 void initialiserPlateau(plateau p)

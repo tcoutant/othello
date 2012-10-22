@@ -88,6 +88,6 @@ float evalue(plateau p)
 
 int partieTerminee(plateau p) //La partie est terminée si les deux joueurs ne peuvent plus jouer
 {
-   return (!existeCoupPourJoueur(p,1) && !existeCoupPourJoueur(p,2)); 
+   return !existeCoupPourJoueur(p,1) && !existeCoupPourCamp(p,1); 
 }
 

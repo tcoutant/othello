@@ -1,3 +1,4 @@
+
 int coupValide(int joueur, plateau p, int NumLigne, int NumColonne)
 {
    
@@ -6,20 +7,7 @@ int coupValide(int joueur, plateau p, int NumLigne, int NumColonne)
 }
 
 
-int faitPrise(int joueur,plateau p, int NumLigne, int NumColonne)
-{
-    int i,compte_tmp; 
-    int compte=0;
 
-    for(i=0;i<8;i++)
-    {
-		compte_tmp = faitPriseDansDirection(i,joueur,p,NumLigne,NumColonne);
-		compte+=compte_tmp;
-    }
-
-    return (compte!=0);
-   
-}
 
 void initialiserPlateau(plateau p)
 {
@@ -71,16 +59,4 @@ void afficherPlateau(plateau p)
 		printf("+---");
 	}
 	printf("+\n\n\n");
-}
-
-
-int main()
-{
-	plateau p;
-
-	initialiserPlateau(p);
-
-	afficherPlateau(p);
-
-	return 0;
 }
