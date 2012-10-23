@@ -36,7 +36,7 @@ int main()
               { 
 		 
                   case 1: // Le mode à 2 joueurs a été choisi
-                     	//HumainVsHumain();
+                     	HumainVsHumain();
                   break;
 
                   case 2: // mode 1 joueur contre l'ordi a été choisi

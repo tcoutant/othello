@@ -14,7 +14,7 @@ int proposeEtChoixMenu()
    choix=-1;
    do
    {
-      printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    //  printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
       printf("______________________________________________________\n"); 
       printf("|            Menu Principal du jeu othello            |\n");
       printf("______________________________________________________\n");
