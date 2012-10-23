@@ -75,37 +75,31 @@ void tourJoueur(plateau p, int joueur)
 
 //____________________________________________________________________________________________________________________________
 
-void moteurCPU(plateau p, int joueur)
+void tourCPU(plateau p, int joueur)
 {
+	char c;
+	StrCoup * Coup;   
 
-   char c;
-   StrCoup * Coup;   
+	if(!existeCoupPourJoueur(p, joueur)) 
+	{
+		printf("Vous devez passer, joueur numero %d ! \nAppuyer sur une touche pour continuer\n",joueur);
+   
+		fgets(&c,1,stdin);
+		videStdin();
+	} 
+	else
+	{
+		Coup=(StrCoup *) malloc(sizeof(StrCoup)); 
 
+		if(Coup==NULL)
+			printf("Allocation de memoire dans tourCPU impossible\n"); 
 
-   if(!existeCoupPourJoueur(p, joueur)) 
-   {
-      printf("Vous devez passer, joueur num��ro %d ! :( \nAppuyer sur une touche pour continuer\n",joueur);
-      
-      fgets(&c,1,stdin);
-      videStdin();
-     
-   } 
-   else
-   {
+	printf("Evaluation retenue(max): %f\n",trouveCoupMinimax(p,joueur,3,Coup));
 
+	joueLeCoup(p,(Coup->ligne),(Coup->colonne),joueur);
 
-        Coup=(StrCoup *) malloc(sizeof(StrCoup)); 
-  
-        if(Coup==NULL)
-           printf("Allocation dans moteurCPU impossible\n"); 
-
-        printf("Evaluation Retenue(max): %f\n",trouveCoupMinimax(p,joueur,3,Coup));
-
-        joueLeCoup(p,Coup->ligne,Coup->colonne,joueur);
-
-        free(Coup);
-        
-   }      
+	free(Coup); //Liberation de la structure Coup
+	}      
 }
 
 
@@ -182,43 +176,33 @@ void joueHumainVsCPU(int joueur)
 
 //_______________________________________________________________________________________________________________________________________________
 
-void joueCPUVsCPU()
+void CPUvsCPU()
 {
-   plateau p;
-   int cpt_joueur=2,Px=0,Po=0; 
+	plateau p;
+	int tour_joueur=2,Piont1=0,Point2=0; 
 
-   demandeDIM_MAX();
+	//demandeDIM_MAX();
    
-   initialisePlateau(p);
-   afficheOthellier(p); 
- 
+	initialisePlateau(p);
+	afficherPlateau(p); 
 
-                  
-       do
-       { 
-          if( (cpt_joueur%2)==0 )
-          {
-             
-             moteurCPU(p,1);    
-         
-          }
-          else
-          {
-         
-             moteurCPU(p,2);    
-         
-          }
-          
-          cpt_joueur++;      
+	do
+	{ 
+		if((tourJoueur%2)==0)
+		{
+			moteurCPU(p,1);
+		}
+		else
+		{
+			moteurCPU(p,2);
+		}
+		cpt_joueur++;
 
-       } 
-        while(!partieTerminee(p));
-     
+	}while(!partieTerminee(p));
 
-
-        printf("\n\n\n\n La Partie est termin��e !\n");
+        printf("\n\n\n\n La Partie est terminee !\n");
         comptePions(p,&Px,&Po);
-        printf("Le score est (o - x):  %i - %i\n",Po,Px);
+        printf("Le score est : CPU %d - CPU2 %d\n",Point1,Point2);
 
 }
 
