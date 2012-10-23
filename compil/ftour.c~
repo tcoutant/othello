@@ -241,7 +241,6 @@ void tourJoueur(plateau p, int joueur)
       printf("Vous devez passer, joueur numéro %d ! \nAppuyez sur une touche pour continuer\n",joueur);
       
       fgets(&c,1,stdin);
-      videStdin();
    } 
    else
    {

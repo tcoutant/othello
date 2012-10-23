@@ -155,11 +155,7 @@ void saisiUnCoup(int joueur, int * NumLigne, int * NumColonne)
       fgets(tmp, sizeof tmp, stdin);
 
       *NumLigne=tmp[2]-'0'-1;
-		printf("%d\n", *NumLigne);
       *NumColonne=tmp[0]-'a';
-      	printf("%d\n", *NumColonne);
-
-
 }
 /*____________________________________________________________________________*/
 
