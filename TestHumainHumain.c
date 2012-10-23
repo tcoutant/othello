@@ -2,7 +2,6 @@
 #include<stdlib.h>
 #define DIM_MAX 8
 
-
 typedef int plateau[DIM_MAX][DIM_MAX];
 
 typedef struct _StrCoup {
@@ -19,6 +18,10 @@ typedef struct _Maillon {
                           struct _Maillon * suivant;
  
                         } Maillon;
+
+int coupValide(int joueur, plateau p, int NumLigne, int NumColonne);
+
+
 
 
 void initialiserPlateau(plateau p)
@@ -39,9 +42,10 @@ void afficherPlateau(plateau p)
 {
 	int i,j,k;
 
-	printf("\v");
-
-	printf("\t    a   b   c   d   e   f   g   h\n");
+	printf("\t");
+	for(i=0;i<DIM_MAX;i++)
+	printf("  %2c",'a'+i);
+	printf("\n");
 	
 	for(i=0;i<DIM_MAX;i++)
 	{
@@ -58,9 +62,9 @@ void afficherPlateau(plateau p)
 			if(p[i][j]==0)
 				printf("   |");
 			else if (p[i][j]==1)
-					printf(" @ |");
+					printf(" 1 |");
 				else
-					printf(" O |");
+					printf(" 2 |");
 		}
 		printf("\n");
 	}
@@ -73,7 +77,7 @@ void afficherPlateau(plateau p)
 	printf("+\n\n\n");
 }
 
-int existeCoupPourJoueur(plateau p,int joueur)
+int existeCoupPourJoueur(plateau p,int joueur)//OK
 {
    int i,j;  
  
@@ -81,7 +85,7 @@ int existeCoupPourJoueur(plateau p,int joueur)
    {
       for(j=0;j<DIM_MAX;j++)
       {
-         if(coupValide(joueur,p,i,j))
+         if(coupValide(joueur,p,i,j)==1)
              return 1;
       }
    }
@@ -119,8 +123,8 @@ void comptePions(plateau p, int *NbPions1, int *NbPions2)//Compte le nombre de p
    {
       printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
       printf("Entrez la dimension du reversi (4,6 ou 8)\n");
-      scanf("%d",&DIM_MAX);
-      videStdin();
+      scanf("%d",DIM_MAX);
+
 
    } while(DIM_MAX!=4 && DIM_MAX!=6 && DIM_MAX!=8);
      printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
@@ -208,7 +212,10 @@ int faitPriseDansDirection(int direction, int joueur, plateau p, int NumLigne, i
 		}
 		else  
 		{              
-			return (renvoieContenuCase(p,NumLigne,NumColonne)==joueur);
+			if(renvoieContenuCase(p,NumLigne,NumColonne)==joueur)
+				return 1;
+			else
+				return 0;
 		}
    }
 }
@@ -258,7 +265,7 @@ int retournePionsDansDirection(int direction, int joueur, plateau p, int NumLign
 		break;
 	}  
 
-    if( !faitPriseDansDirection(direction,joueur,p,NumLigne,NumColonne)) 
+    if(faitPriseDansDirection(direction,joueur,p,NumLigne,NumColonne)==0) 
     	return 0;
 
        NumLigne+=dirLigne; 
@@ -301,9 +308,10 @@ int faitPrise(int joueur,plateau p, int NumLigne, int NumColonne)
 		compte_tmp = faitPriseDansDirection(i,joueur,p,NumLigne,NumColonne);
 		compte+=compte_tmp;
     }
-
-    return (compte!=0);
-   
+    if (compte!=0)
+		return 1;
+	else 
+		return 0;  
 }
 
 void joueLeCoup(plateau p, int NumLigne, int NumColonne, int joueur)//Joue un coup
@@ -315,10 +323,10 @@ void joueLeCoup(plateau p, int NumLigne, int NumColonne, int joueur)//Joue un co
       afficherPlateau(p);											//Affichage du plateau
 }
 
-int coupValide(int joueur, plateau p, int NumLigne, int NumColonne)
+int coupValide(int joueur, plateau p, int NumLigne, int NumColonne)//OK
 {
    
-   if((faitPrise(joueur,p,NumLigne,NumColonne)==0) && (renvoieContenuCase(p,NumLigne,NumColonne)==0))
+   if((faitPrise(joueur,p,NumLigne,NumColonne)==1) && (renvoieContenuCase(p,NumLigne,NumColonne)==0))
 		return 1;
 	else
 		return 0;
@@ -336,9 +344,8 @@ int donneTousLesCoupsValides(plateau p, int joueur, Maillon ** teteMaillon)
 
    for(i=0;i<DIM_MAX;i++)
        for(j=0;j<DIM_MAX;j++)
-              if(coupValide(joueur,p,i,j))
-              {                   
-
+              if(coupValide(joueur,p,i,j)==1)
+              {
                  newMaillon=(Maillon *)malloc(sizeof(Maillon));
                  
                  if(!newMaillon)
@@ -346,7 +353,6 @@ int donneTousLesCoupsValides(plateau p, int joueur, Maillon ** teteMaillon)
                     printf("malloc null: newMaillon,donneTousLesCoupsValides \n");
                     exit(1);              
                  }
-                 
                  newMaillon->coup.ligne=i;
                  newMaillon->coup.colonne=j;
                  newMaillon->coup.joueur=joueur;
@@ -393,12 +399,16 @@ char * donneStringCoupsValides(plateau p, int joueur)
    while(courantMaillon) 
    { 
                      
-      *(coups+index)='(';   index++;
+      *(coups+index)='(';   
+		index++;
       *(coups+index)=courantMaillon->coup.colonne+'a'; index++;  
-      *(coups+index)=' ';   index++; 
+      *(coups+index)=' ';   
+		index++; 
       *(coups+index)=(courantMaillon->coup.ligne)+'1'; index++;
-      *(coups+index)=')';   index++;  
-      *(coups+index)=' ';   index++;
+      *(coups+index)=')';  
+		index++;  
+      *(coups+index)=' ';   
+		index++;
 
       courantMaillon=courantMaillon->suivant;
 
@@ -417,16 +427,15 @@ void videStdin()
      c = getchar();
 
      if (c != '\n')
-       while ( (getchar()) != '\n'); 
+       while ( (getchar()) != '\n');
  
 }
 
 void saisiUnCoup(int joueur, int * NumLigne, int * NumColonne)
 {
-
       char tmp[4];
 
-      printf("Veuillez entrez un coup joueur num��ro %d (format: a 1,...,h 8)\npuis appuyer sur Entrée\n",joueur);
+      printf("->Veuillez entrez une case pour le joueur numéro %d (exemple: a 1)\nPuis appuyer sur Entrée\n",joueur);
 
       fgets(tmp, sizeof tmp, stdin);
 
@@ -434,7 +443,6 @@ void saisiUnCoup(int joueur, int * NumLigne, int * NumColonne)
       *NumColonne=tmp[0]-'a';
       
       videStdin();
-
 }
 
 void tourJoueur(plateau p, int joueur)
@@ -452,25 +460,21 @@ void tourJoueur(plateau p, int joueur)
    } 
    else
    {
-      
-
       do 
       {  
          testL=DIM_MAX;
          testC=DIM_MAX;
    
-         printf("CoupsValides: %s\n",donneStringCoupsValides(p, joueur)); 
+         printf("CoupsValides--: %s\n",donneStringCoupsValides(p, joueur)); 
          
          saisiUnCoup(joueur,&testL,&testC);
             
 
-      } while( 
-                (   ( testL >= DIM_MAX )
+      } while(((testL >= DIM_MAX )
                  || ( testC >= DIM_MAX )            
                  || ( testL < 0 )   
-                 || ( testC < 0 ) 
-                ) 
-              || ( !coupValide(joueur, p,testL,testC) ) 
+                 || ( testC < 0 ) ) 
+              	 || ( coupValide(joueur, p,testL,testC)==0 ) 
              );
          
         joueLeCoup(p,testL,testC,joueur);    
@@ -482,14 +486,12 @@ void joueHumainHumain()
 {
 	plateau p;  
 	int tour=2,Point1=0,Point2=0; 
-	//int DIM_MAX=0;
    
 	//demandeDIM_MAX(&DIM_MAX);
 
 	initialiserPlateau(p);
 
-	afficherPlateau(p); 
-                   
+	afficherPlateau(p);
 	do
 	{ 
 		if((tour%2)==0)
