@@ -14,7 +14,7 @@ int proposeEtChoixMenu()
    choix=-1;
    do
    {
-      printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+      printf("\n\n\n");
       printf("______________________________________________________\n"); 
       printf("|                                                     |\n");
       printf("|            Menu Principal du jeu othello            |\n");
@@ -29,7 +29,7 @@ int proposeEtChoixMenu()
       printf("         4 - Quitter\n");
       printf("\n\n\n"); 
       printf("   Faite votre choix puis appuyer sur Entrée...\n");
-      scanf("%i",&choix);
+      scanf(" %i",&choix);
    }      while(choix<1 || choix>4);
    
    return choix;

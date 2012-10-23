@@ -37,6 +37,7 @@ int main()
 		 
                   case 1: // Le mode à 2 joueurs a été choisi
                      	HumainVsHumain();
+			main();
                   break;
 
                   case 2: // mode 1 joueur contre l'ordi a été choisi
@@ -64,7 +65,7 @@ int main()
 			main();
 		  
                   break;
-
+		
                }
            
            break;
@@ -91,7 +92,7 @@ printf("   tapez 1 puis Entrée pour revenir au menu...\n");
            scanf("%d",&c);
 	   while(c!=1)
 	   	scanf("%d",&c);
-  
+  	   main();
            break;
 
        case 3: // menu affichage des auteurs a été choisi
@@ -115,7 +116,7 @@ printf("   tapez 1 puis Entrée pour revenir au menu...\n");
            main();
 
            break;
-
+main();
        case 4: //menu quitter le jeu a été choisi
 	   
 printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
@@ -125,6 +126,6 @@ printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
  
       
    }
-	main();
+	
 	return 0;
 }

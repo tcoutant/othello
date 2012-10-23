@@ -29,6 +29,6 @@ void HumainVsHumain()
 
         printf("\n\n\n\n La Partie est terminee !\n");
         comptePions(p,&Point1,&Point2);
-        printf("Le score est Joueur 1 : %i - Joueur 2 : %i\n",Point1,Point2);
+        printf("Le score final est Joueur 1: %i  et Joueur 2: %i\n",Point1,Point2);
 		videStdin();
 }
