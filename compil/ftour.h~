@@ -53,4 +53,25 @@ void saisiUnCoup(int joueur, int * NumLigne, int * NumColonne);
 
 
 
+/*
+	Déroulement du tour d'un joueur
+	On regarde si le joueur peut jouer, avec la fonction existeCoupPourJoueur
+	Si oui, on liste tous les coups qu'il peut jouer
+	On lui demande de saisir des coordonées
+	On teste si les valeurs données sont correctes et si le coup est valide
+	On joue le coup (retourne les pions qu'il faut....)
+*/
+void tourJoueur(plateau p, int joueur);
+
+
+////////////////Tomas -> maxPions
+
+void free_Maillons(Maillon * teteMaillon);
+
+int ecartPions(plateau p);
+
+void dupliPlateau(plateau p, plateau * dupli);
+
+
+
 

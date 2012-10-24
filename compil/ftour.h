@@ -64,5 +64,14 @@ void saisiUnCoup(int joueur, int * NumLigne, int * NumColonne);
 void tourJoueur(plateau p, int joueur);
 
 
+////////////////Tomas -> maxPions
 
+void free_Maillons(Maillon * teteMaillon);
 
+int ecartPions(plateau p);
+
+void dupliPlateau(plateau p, plateau * dupli);
+
+int trouveCoupMaxPions(plateau p, StrCoup * Coup,int joueur);
+
+void tourCPU(plateau p, int joueur);
