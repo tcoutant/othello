@@ -8,6 +8,14 @@
 #include "ftour.h"
 
 
+/*/////////////////////////////////
+ /                                              
+ /    Nom : int proposeEtChoixMenu()
+ /                           
+ /    retourne le choix du menu principal
+ /        
+ /////////////////////////////////*/
+
 int proposeEtChoixMenu()
 {
    int choix;
@@ -15,36 +23,22 @@ int proposeEtChoixMenu()
    do
    {
       printf("\n\n\n");
-<<<<<<< HEAD
-      printf("______________________________________________________\n");
-      printf("|                                                    |\n");
-      printf("|         Menu Principal du jeu othello              |\n");
-=======
       printf("______________________________________________________\n"); 
       printf("|                                                     |\n");
       printf("|            Menu Principal du jeu othello            |\n");
->>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
       printf("______________________________________________________\n");
       printf("\n");
-      printf(" 1 - Jouer\n");
+      printf("         1 - Jouer\n");
       printf("\n");
-      printf(" 2 - Règles\n");
+      printf("         2 - Règles\n");
       printf("\n");
-      printf(" 3 - Auteurs\n");
+      printf("         3 - Auteurs\n");
       printf("\n");
-<<<<<<< HEAD
-      printf(" 4 - Quitter\n");
-      printf("\n\n\n");
-      printf(" Faite votre choix puis appuyer sur Entrée...\n");
-      scanf(" %i",&choix);
-   } while(choix<1 || choix>4);
-=======
       printf("         4 - Quitter\n");
       printf("\n\n\n"); 
       printf("   Faite votre choix puis appuyer sur Entrée...\n");
       scanf(" %i",&choix);
    }      while(choix<1 || choix>4);
->>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
    
    return choix;
 }
@@ -52,12 +46,12 @@ int proposeEtChoixMenu()
 
 
 /*/////////////////////////////////
-/
-/ Nom : int proposeEtChoixModeDeJeu()
-/
-/ retourne le choix du mode de jeux
-/
-/////////////////////////////////*/
+ /                                              
+ /    Nom : int proposeEtChoixModeDeJeu()
+ /                           
+ /    retourne le choix du mode de jeux
+ /        
+ /////////////////////////////////*/
 
 int proposeEtChoixModeDeJeu()
 {
@@ -66,46 +60,32 @@ int proposeEtChoixModeDeJeu()
    do
    {
       printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-<<<<<<< HEAD
-=======
       printf("______________________________________________________\n"); 
       printf("|                                                     |\n");
       printf("|              Menu choix du type de jeu             |\n");
->>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
       printf("______________________________________________________\n");
-      printf("|                                                     |\n");
-      printf("|          Menu choix du type de jeu                  |\n");
-      printf("_______________________________________________________\n");
       printf("\n");
-      printf(" 1 - à 2 joueurs \n");
+      printf("         1 - à 2 joueurs \n");
       printf("\n");
-      printf(" 2 - un joueur contre l'ordinateur \n");
+      printf("         2 - un joueur contre l'ordinateur \n");
       printf("\n");
-<<<<<<< HEAD
-      printf(" 3 - Retour au Menu Principal\n");
-      printf("\n\n\n\n\n\n");
-      printf(" Faite votre choix puis appuyer sur Entrée...\n");
-      scanf("%i",&mode);
-    } while(mode<1 || mode>3);
-=======
       printf("         3 - Retour au Menu Principal\n");
       printf("\n\n\n\n\n\n"); 
       printf("   Faite votre choix puis appuyer sur Entrée...\n");
       scanf("%i",&mode);
     }     while(mode<1 || mode>3);
->>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
    
    return mode;
 }
 
 
 /*/////////////////////////////////
-/
-/ Nom : int proposeEtChoixNiveauDeJeu()
-/
-/ retourne le niveau de jeux choisi
-/
-/////////////////////////////////*/
+ /                                              
+ /    Nom : int proposeEtChoixNiveauDeJeu()                          
+ / 
+ /    retourne le niveau de jeux choisi
+ /        
+ /////////////////////////////////*/
 
 int proposeEtChoixNiveauDeJeu()
 {
@@ -114,16 +94,10 @@ int proposeEtChoixNiveauDeJeu()
    do
    {
       printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-<<<<<<< HEAD
-=======
       printf("______________________________________________________\n"); 
       printf("|                                                     |\n");
       printf("|             Menu choix du niveau de jeu             |\n");
->>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
       printf("______________________________________________________\n");
-      printf("|                                                     |\n");
-      printf("|             Menu choix du niveau de jeu             |\n");
-      printf("_______________________________________________________\n");
       printf("\n");
       printf(" 1 - Niveau débutant, réponse aléatoire de l'ordi \n");
       printf("\n");
@@ -132,17 +106,10 @@ int proposeEtChoixNiveauDeJeu()
       printf(" 3 - Niveau moyen, l'ordi joue pour minimiser le nb de coup jouables ensuite\n");
       printf("\n");
       printf(" 4 - Niveau expert, l'ordi utilise minimax\n");
-<<<<<<< HEAD
-      printf("\n\n\n\n\n\n");
-      printf(" Faite votre choix puis appuyer sur Entrée...\n");
-      scanf("%i",&niveau);
-    } while(niveau<1 || niveau>4);
-=======
       printf("\n\n\n\n\n\n"); 
       printf("   Faite votre choix puis appuyer sur Entrée...\n");
       scanf("%i",&niveau);
     } 	  while(niveau<1 || niveau>4);
->>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
    
    return niveau;
 }

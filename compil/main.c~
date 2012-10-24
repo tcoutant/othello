@@ -39,6 +39,7 @@ int main()
 <<<<<<< HEAD
 						main();
 =======
+			main();
 >>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
                   break;
 
@@ -62,23 +63,19 @@ int main()
 						}
 
 <<<<<<< HEAD
-                  break;
-  
-                  case 3: // retour au menu principal
-						main();
 =======
 			   case 4: // niveau expert
 			   break;
 			}
 		   
+>>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
                   break;
   
                   case 3: // retour au menu principal
-			//main();
->>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
+						main();
 		  
                   break;
-		  main();
+		
                }
            
            break;
@@ -118,10 +115,10 @@ int main()
 			printf("\t|       université d'Angers    octobre 2012          |\n");
 			printf("\t______________________________________________________\n");
 			printf("\n\n\n");
-			printf("\t---------------------Jeu othello--------------------------\n\n");
-			printf("\t  Sources d'appui de: Vincent Spiewak et Allaedine Elbanna\n");
+			printf("\t---------------------Jeu othello----------------------\n\n");
+			printf("\tSources d'appui de: Vincent Spiewak et Allaedine Elbanna\n");
 			printf("\n");
-			printf("\t  reprit par: Thomas Fraquet, Florent Guibert, Thierry Coutant\n");
+			printf("\treprit par: Thomas Fraquet, Florent Guibert, Thierry Coutant\n");
 			printf("\n\n\n\n\n\n\n");
 			printf("\ttapez 1 puis Entrée pour revenir au menu...\n");
 =======
