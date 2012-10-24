@@ -151,7 +151,7 @@ void saisiUnCoup(int joueur, int * NumLigne, int * NumColonne)
 {
       char tmp[4];
 
-      printf("Veuillez entrez un coup joueur numero %d (format: a 1,...,h 8)\npuis appuyer sur Entree\n",joueur);
+      printf(" Veuillez entrez une case pour le joueur numero %d ( au format a 1 )\n puis appuyer sur Entree\n",joueur);
 	videStdin();
       fgets(tmp, sizeof tmp, stdin);
 
@@ -235,7 +235,7 @@ void tourJoueur(plateau p, int joueur)
    
    if(!existeCoupPourJoueur(p,joueur)) 
    {
-      printf("Vous devez passer, joueur numéro %d ! \nAppuyez sur une touche pour continuer\n",joueur);
+      printf(" Le joueur numéro %d doit passer son tour ! \n Appuyez sur une touche pour continuer\n",joueur);
       
       fgets(&c,1,stdin);
    } 

@@ -15,9 +15,15 @@ int proposeEtChoixMenu()
    do
    {
       printf("\n\n\n");
+<<<<<<< HEAD
       printf("______________________________________________________\n");
       printf("|                                                    |\n");
       printf("|         Menu Principal du jeu othello              |\n");
+=======
+      printf("______________________________________________________\n"); 
+      printf("|                                                     |\n");
+      printf("|            Menu Principal du jeu othello            |\n");
+>>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
       printf("______________________________________________________\n");
       printf("\n");
       printf(" 1 - Jouer\n");
@@ -26,11 +32,19 @@ int proposeEtChoixMenu()
       printf("\n");
       printf(" 3 - Auteurs\n");
       printf("\n");
+<<<<<<< HEAD
       printf(" 4 - Quitter\n");
       printf("\n\n\n");
       printf(" Faite votre choix puis appuyer sur Entrée...\n");
       scanf(" %i",&choix);
    } while(choix<1 || choix>4);
+=======
+      printf("         4 - Quitter\n");
+      printf("\n\n\n"); 
+      printf("   Faite votre choix puis appuyer sur Entrée...\n");
+      scanf(" %i",&choix);
+   }      while(choix<1 || choix>4);
+>>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
    
    return choix;
 }
@@ -52,6 +66,12 @@ int proposeEtChoixModeDeJeu()
    do
    {
       printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+<<<<<<< HEAD
+=======
+      printf("______________________________________________________\n"); 
+      printf("|                                                     |\n");
+      printf("|              Menu choix du type de jeu             |\n");
+>>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
       printf("______________________________________________________\n");
       printf("|                                                     |\n");
       printf("|          Menu choix du type de jeu                  |\n");
@@ -61,11 +81,19 @@ int proposeEtChoixModeDeJeu()
       printf("\n");
       printf(" 2 - un joueur contre l'ordinateur \n");
       printf("\n");
+<<<<<<< HEAD
       printf(" 3 - Retour au Menu Principal\n");
       printf("\n\n\n\n\n\n");
       printf(" Faite votre choix puis appuyer sur Entrée...\n");
       scanf("%i",&mode);
     } while(mode<1 || mode>3);
+=======
+      printf("         3 - Retour au Menu Principal\n");
+      printf("\n\n\n\n\n\n"); 
+      printf("   Faite votre choix puis appuyer sur Entrée...\n");
+      scanf("%i",&mode);
+    }     while(mode<1 || mode>3);
+>>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
    
    return mode;
 }
@@ -86,6 +114,12 @@ int proposeEtChoixNiveauDeJeu()
    do
    {
       printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+<<<<<<< HEAD
+=======
+      printf("______________________________________________________\n"); 
+      printf("|                                                     |\n");
+      printf("|             Menu choix du niveau de jeu             |\n");
+>>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
       printf("______________________________________________________\n");
       printf("|                                                     |\n");
       printf("|             Menu choix du niveau de jeu             |\n");
@@ -98,10 +132,19 @@ int proposeEtChoixNiveauDeJeu()
       printf(" 3 - Niveau moyen, l'ordi joue pour minimiser le nb de coup jouables ensuite\n");
       printf("\n");
       printf(" 4 - Niveau expert, l'ordi utilise minimax\n");
+<<<<<<< HEAD
       printf("\n\n\n\n\n\n");
       printf(" Faite votre choix puis appuyer sur Entrée...\n");
       scanf("%i",&niveau);
     } while(niveau<1 || niveau>4);
+=======
+      printf("\n\n\n\n\n\n"); 
+      printf("   Faite votre choix puis appuyer sur Entrée...\n");
+      scanf("%i",&niveau);
+    } 	  while(niveau<1 || niveau>4);
+>>>>>>> 395ea5cb379e2cd17ab7ce560c6d66f2c0884593
    
    return niveau;
 }
+
+
