@@ -233,8 +233,10 @@ int faitPrise(int joueur,plateau p, int NumLigne, int NumColonne)
 		compte+=compte_tmp;
     }
 
-    return (compte!=0);
-   
+    if (compte!=0)
+		return 1;
+	else 
+		return 0;
 }
 /*___________________________________________________________________________________*/
 

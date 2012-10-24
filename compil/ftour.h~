@@ -72,6 +72,6 @@ int ecartPions(plateau p);
 
 void dupliPlateau(plateau p, plateau * dupli);
 
+int trouveCoupMaxPions(plateau p, StrCoup * Coup,int joueur);
 
-
-
+void tourCPU(plateau p, int joueur);

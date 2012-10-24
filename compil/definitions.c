@@ -5,7 +5,7 @@
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-
+#include<time.h>
 
 /*
 	Initialise toutes les cases tu tableau à 0, sauf les quatre du centre

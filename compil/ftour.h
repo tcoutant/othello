@@ -75,3 +75,8 @@ void dupliPlateau(plateau p, plateau * dupli);
 int trouveCoupMaxPions(plateau p, StrCoup * Coup,int joueur);
 
 void tourCPU(plateau p, int joueur);
+
+
+//////// thierry -> fonction qui repond aleatoirement
+
+void moteurOrdiAleatoire(plateau p, int joueur);

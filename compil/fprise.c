@@ -6,7 +6,7 @@
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-
+#include<time.h>
 
 
 

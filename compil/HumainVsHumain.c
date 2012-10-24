@@ -6,7 +6,7 @@
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-
+#include<time.h>
 
 void HumainVsHumain()
 {
@@ -54,6 +54,32 @@ void JoueurvsCPUMaxPions()
 
         printf("\n\n\n\n La Partie est terminee !\n");
         comptePions(p,&Point1,&Point2);
-        printf("Le score est : Joueur %d - CPU %d\n",Point1,Point2);
+        printf("Le score est : Joueur %d - Ordi %d\n",Point1,Point2);
 		videStdin();
+}
+
+
+
+void joueJoueurContreOrdiAleatoire()
+{
+   plateau p;  
+   int tour=2,Point1=0,Point2=0; 
+
+   initialiserPlateau(p);
+   afficherPlateau(p); 
+         
+	do
+	{ 
+		if( (tour%2)==0 )
+			tourJoueur(p,1);
+		else
+			moteurOrdiAleatoire(p,2);
+		tour++;
+      
+	}while(!partieTerminee(p));
+
+        printf("\n\n\n\n La Partie est terminee !\n");
+        comptePions(p,&Point1,&Point2);
+        printf("Le score est: Joueur %d - Ordi %d\n",Point1,Point2);
+
 }

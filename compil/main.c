@@ -6,7 +6,7 @@
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-
+#include<time.h>
 
 
 
@@ -45,19 +45,20 @@ int main()
 			switch(menu)
 			{
 			  case 1: // niveau debutant, ordi random
+				joueJoueurContreOrdiAleatoire();
+				main();	
+			  break;
+
+			  case 2: // niveau moyen, maximise le nb de pions retounées
+			  	JoueurvsCPUMaxPions();
+				main();
+			  break;
+
+			  case 3: // niveau moyen, minimise le nb de coups possibles
 
 			  break;
 
-			  case 2: // niveau moyen
-			    JoueurvsCPUMaxPions();
-
-			  break;
-
-			  case 3: // niveau experimenté
-
-			  break;
-
-			  case 4: // niveau expert
+			  case 4: // niveau expert, minimax
 			  break;
 			}
 
@@ -110,9 +111,10 @@ printf(" tapez 1 puis Entrée pour revenir au menu...\n");
 	printf("\t______________________________________________________\n");
 	printf("\n\n\n");
 	printf("\t---------------------Jeu othello----------------------\n\n");
-	printf("\tSources d'appui de: Vincent Spiewak et Allaedine Elbanna\n");
+	printf("\télaboré par: Thomas Fraquet, Florent Guibert, Thierry Coutant\n");
 	printf("\n");
-	printf("\treprit par: Thomas Fraquet, Florent Guibert, Thierry Coutant\n");
+	printf("\tSources: Vincent Spiewak et Allaedine Elbanna\n");
+	
 	printf("\n\n\n\n\n\n\n");
 	printf("\ttapez 1 puis Entrée pour revenir au menu...\n");
 
