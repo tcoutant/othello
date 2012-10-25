@@ -6,7 +6,7 @@
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-#include "HumainVsHumain.h"
+#include "modeDeJeu.h"
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
@@ -48,8 +48,8 @@ void tourCPURandom(plateau p, int joueur)
 	
 	/* joue le coup choisi aleatoirement */
 	joueLeCoup(p,courantMaillon->coup.ligne,courantMaillon->coup.colonne,joueur);
-	
-	free_Maillons(teteMaillon);//Libération de tout les maillons        
+	printf("Coup aléatoire joué par l'ordi : (%c %d)\n", 'a'+courantMaillon->coup.colonne, courantMaillon->coup.ligne+1);
+	free_Maillons(teteMaillon);//Libération de tout les maillons     
 	}    
 }
 

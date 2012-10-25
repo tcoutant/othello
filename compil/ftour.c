@@ -5,14 +5,10 @@
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-<<<<<<< HEAD
-#include "HumainVsHumain.h"
+#include "modeDeJeu.h"
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
-=======
-#include<time.h>
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
 
 
 /*
@@ -143,7 +139,7 @@ int donneTousLesCoupsValides(plateau p, int joueur, Maillon ** teteMaillon)
               }       
 
          *teteMaillon=courantMaillon;
-
+	printf("Il y a %d coups valides : ", cpt);
    return cpt;
 }
 /*______________________________________________________________________________*/
@@ -158,12 +154,11 @@ void saisiUnCoup(int joueur, int * NumLigne, int * NumColonne)
 {
       char tmp[4];
 
-      printf(" Saisissez une case pour le joueur numero %d (au format 'a 1')\n puis appuyez sur Entrée\n",joueur);
-	videStdin();
-      fgets(tmp, sizeof tmp, stdin);
+	printf(" Saisissez une case pour le joueur numero %d (au format 'a 1')\n puis appuyez sur Entrée\n",joueur);
+	fgets(tmp, sizeof tmp, stdin);
 
-      *NumLigne=tmp[2]-'0'-1;
-      *NumColonne=tmp[0]-'a';
+	*NumLigne=tmp[2]-'0'-1;
+	*NumColonne=tmp[0]-'a';
 }
 /*____________________________________________________________________________*/
 
@@ -192,9 +187,7 @@ char * donneStringCoupsValides(plateau p, int joueur)
    
    index=0;
    
-   
-   printf("Il y a %i ",
-   donneTousLesCoupsValides(p,joueur,&teteMaillon));
+	donneTousLesCoupsValides(p,joueur,&teteMaillon);
    
    courantMaillon=teteMaillon;
 
@@ -236,33 +229,28 @@ char * donneStringCoupsValides(plateau p, int joueur)
 */
 void tourJoueur(plateau p, int joueur)
 {
-   int testL=0;
-   int testC=0;
+   int testL=-1;
+   int testC=-1;
    
    if(!existeCoupPourJoueur(p,joueur)) 
       printf(" Le joueur numéro %d doit passer son tour !\n",joueur);
    else
    {
-      do 
-      {  
-         testL=DIM_MAX;
-         testC=DIM_MAX;
-   
-         printf("Cases Jouables : %s\n",donneStringCoupsValides(p, joueur)); 
-         
-         saisiUnCoup(joueur,&testL,&testC);
-            
-
-      } while(((testL >= DIM_MAX )
-                 || ( testC >= DIM_MAX )            
-                 || ( testL < 0 )   
-                 || ( testC < 0 ) ) 
-              	 || ( coupValide(joueur, p,testL,testC)==0 ) 
-             );
-         
-        joueLeCoup(p,testL,testC,joueur);    
-
-   }      
+		while(((testL >= DIM_MAX )
+			|| ( testC >= DIM_MAX )            
+			|| ( testL < 0 )   
+			|| ( testC < 0 ) ) 
+			|| ( coupValide(joueur, p,testL,testC)==0 ) 
+			) 
+		{  
+			testL=DIM_MAX;
+			testC=DIM_MAX;
+			printf("%s\n",donneStringCoupsValides(p, joueur)); 
+			videStdin();
+			saisiUnCoup(joueur,&testL,&testC);
+		} 
+		joueLeCoup(p,testL,testC,joueur);    
+	}      
 }
 /*__________________________________________________________________________*/
 
@@ -278,152 +266,4 @@ void dupliPlateau(plateau p, plateau * dupli)//OK
 	for(i=0;i<DIM_MAX;i++)
 		for(j=0;j<DIM_MAX;j++)
       (*dupli)[i][j]=p[i][j];  
-<<<<<<< HEAD
-=======
-} 
-
-int trouveCoupMaxPions(plateau p, StrCoup * Coup,int joueur)
-{
-	int equart_tmp,equart;
-	int Ligne,Colonne;
-
-
-	plateau tmp;//Plateau temporaire pour tester les differents coups
-
-	Maillon * teteMaillon;//Maillon pour avoir les coupsValides
-	Maillon * tmpMaillon;//Maillon pour parcourir les coupsValides
-   
-  
-	equart=-70;
-	Coup->joueur=joueur;
-
-	teteMaillon=NULL; 
-
-	donneTousLesCoupsValides(p,joueur,&teteMaillon);//Rentre tout les coup valides dans la liste chainée
-	tmpMaillon=teteMaillon;//Pour pouvoir parcourir la chaine
-
-	 /*********************************\
-   	|   Parcours de la liste chainée   |
-	\*********************************/
-   
-	/* Tant que le maillon est pas null */
-	while(tmpMaillon!=NULL) 
-	{
-       /* Duplication du Plateau*/
-		dupliPlateau(p,&tmp);
-
-		Ligne = tmpMaillon->coup.ligne;
-		Colonne = tmpMaillon->coup.colonne;         
- 
-		printf("Test de la position: (%c %d)\n",Colonne+'a',Ligne+1);
-       
-		tmp[Ligne][Colonne]=joueur;
-		retournePions(joueur,tmp,Ligne,Colonne);
-         
-       // afficherPlateau(tmp);
-       
-
-		equart_tmp=ecartPions(tmp);
-
-		printf("resultat: equart:%d equart_tmp:%d\n",equart,equart_tmp);
-
-		if(equart < equart_tmp)
-		{
-			printf("Ce coup implique un plus gros ecart\n");
-			equart=equart_tmp;
-			Coup->ligne=Ligne;
-			Coup->colonne=Colonne;
-			printf("\n");
-		}
-		else 
-			printf("\n");
-
-		/* Passage du maillon suivant */
-		tmpMaillon = tmpMaillon->suivant;
-	}; 
-
-   free_Maillons(teteMaillon); //Liberation de tout les maillons
-	
-	return equart;   //renvoie le plus grand nombre d'ecart de point possible entre les deux joueurs
 }
-
-
-void tourCPU(plateau p, int joueur)
-{
-	char c;
-	StrCoup * Coup;   
-
-	if(existeCoupPourJoueur(p, joueur) == 0) 
-	{
-		printf("Vous devez passer, joueur numero %d ! \nAppuyer sur une touche pour continuer\n",joueur);
-   
-		fgets(&c,1,stdin);
-		videStdin();
-	} 
-	else
-	{
-		Coup=(StrCoup *) malloc(sizeof(StrCoup)); //Allocation liste chainé
-
-		if(Coup == NULL)
-			printf("Allocation de memoire dans tourCPU impossible\n"); 
-
-	/* Retient le meilleur coup possible dans la variable Coup */
-
-	printf("Equart retenu apres coup: %d\n",trouveCoupMaxPions(p,Coup,joueur));
-
-	joueLeCoup(p,(Coup->ligne),(Coup->colonne),joueur);
-
-	free(Coup); //Liberation de la structure Coup
-	}      
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
-}
-
-//////// thierry -> fonction qui repond aleatoirement
-
-void moteurOrdiAleatoire(plateau p, int joueur)
-{
-	char c;//
-	int nbCoupsPossibles;
-	int nbAleatoireChoisi;
-	int test=0;//->initialisation test a zero
-
-	Maillon *teteMaillon;  //Il sera alloué dans donneTousLesCoupsValides
-	Maillon *courantMaillon;//Sert a parcourir teteMaillon, pas besoin d'etre alloué
-	
-	srand(time(NULL)); //inclu time.h pour avoir une valeur au hasard par rapport a l'heure de l'ordi
-
-	if(!existeCoupPourJoueur(p, joueur)) 
-	{
-	printf(" Le joueur numero %d doit passer son tour !  \n Appuyer sur une touche pour continuer\n",joueur);
-      
-		fgets(&c,1,stdin);
-		videStdin();
-	} 
-	else
-	{
-        /*remplit la liste des coups jouables et retourne le nb de coups possibles*/
-
-	nbCoupsPossibles=donneTousLesCoupsValides(p,joueur,&teteMaillon);
-	printf("nb de Cases Possibles = %d\n",nbCoupsPossibles);
-
-	/* effectue un random sur le nombre de valeurs possibles*/
-
-	nbAleatoireChoisi = (random()%nbCoupsPossibles)+1;
-	printf("Case Aleatoire Choisi = %d\n",nbAleatoireChoisi);
-	courantMaillon = teteMaillon;   //Pour parcourire teteMaillon
-
-	/* retrouver dans la liste le coup choisi aleatoirement */
-
-	while (test<(nbAleatoireChoisi-1))//-1 pour aller un cran moins loin dans le liste
-	{
-		courantMaillon = courantMaillon->suivant;
-		test++;
-	}
-	
-	/* joue le coup choisi aleatoirement */
-	joueLeCoup(p,courantMaillon->coup.ligne,courantMaillon->coup.colonne,joueur);
-	
-	free_Maillons(teteMaillon);//Libération de tout les maillons        
-	}    
-}
-

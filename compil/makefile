@@ -1,4 +1,4 @@
-all : definitions.o fmenu.o fprise.o ftour.o HumainVsCPUMaxPions.o HumainVsCPUMinOptions.o HumainVsCPURandom.o HumainVsHumain.o main.o projet
+all : definitions.o fmenu.o fprise.o ftour.o HumainVsCPUMaxPions.o HumainVsCPUMinOptions.o HumainVsCPURandom.o modeDeJeu.o main.o projet
 
 definitions.o : definitions.c
 	gcc -c -Wall definitions.c
@@ -21,14 +21,14 @@ HumainVsCPUMinOptions.o : HumainVsCPUMinOptions.c
 HumainVsCPURandom.o : HumainVsCPURandom.c
 	gcc -c -Wall HumainVsCPURandom.c
 
-HumainVsHumain.o : HumainVsHumain.c
-	gcc -c -Wall HumainVsHumain.c
+modeDeJeu.o : modeDeJeu.c
+	gcc -c -Wall modeDeJeu.c
 
 main.o : main.c
 	gcc -c -Wall main.c
 
-projet : definitions.o fmenu.o fprise.o ftour.o HumainVsHumain.o main.o
-	gcc -o projet definitions.o fmenu.o fprise.o ftour.o HumainVsCPUMaxPions.o HumainVsCPUMinOptions.o HumainVsCPURandom.o HumainVsHumain.o main.o
+projet : definitions.o fmenu.o fprise.o ftour.o modeDeJeu.o main.o
+	gcc -o projet definitions.o fmenu.o fprise.o ftour.o HumainVsCPUMaxPions.o HumainVsCPUMinOptions.o HumainVsCPURandom.o modeDeJeu.o main.o
 
 clean :
 	rm *.o *~

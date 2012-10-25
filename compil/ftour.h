@@ -74,17 +74,12 @@ void dupliPlateau(plateau p, plateau * dupli);
 
 int trouveCoupMaxPions(plateau p, StrCoup * Coup,int joueur);
 
-<<<<<<< HEAD
 void tourCPUMaxPions(plateau p, int joueur);
-=======
-void tourCPU(plateau p, int joueur);
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
 
 
 //////// thierry -> fonction qui repond aleatoirement
 
 void moteurOrdiAleatoire(plateau p, int joueur);
-<<<<<<< HEAD
 
 //////// Florent : MinOptions
 
@@ -96,5 +91,3 @@ int trouveCoupMinOptions(plateau p, StrCoup * Coup,int joueur);
 
 
 
-=======
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822

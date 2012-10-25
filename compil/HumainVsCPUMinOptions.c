@@ -5,7 +5,7 @@
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-#include "HumainVsHumain.h"
+#include "modeDeJeu.h"
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
@@ -124,7 +124,7 @@ void tourCPUMinOptions(plateau p, int joueur)
 	printf("Nombre de possibilité pour l'adversaire retenu : %d\n",trouveCoupMinOptions(p,Coup,joueur));
 
 	joueLeCoup(p,(Coup->ligne),(Coup->colonne),joueur);
-
+	printf("Coup joué par l'ordi : (%c %d)\n", 'a'+Coup->colonne, Coup->ligne+1);
 	free(Coup); //Liberation de la structure Coup
 	}      
 }

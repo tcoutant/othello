@@ -5,16 +5,10 @@
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-<<<<<<< HEAD
-#include "HumainVsHumain.h"
+#include "modeDeJeu.h"
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
-=======
-#include<time.h>
-
-
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
 
 
 /*

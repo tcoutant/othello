@@ -5,17 +5,13 @@
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-<<<<<<< HEAD
-#include "HumainVsHumain.h"
+#include "modeDeJeu.h"
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
 
 
 
-=======
-#include<time.h>
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
 
 void HumainVsHumain()
 {
@@ -39,34 +35,29 @@ void HumainVsHumain()
         printf("\n\n\n\n La Partie est terminée !\n");
         comptePions(p,&Point1,&Point2);
         printf("Le score final est :\nJoueur 1 : %d\nJoueur 2 : %i\n",Point1,Point2);
-		videStdin();
 }
 /*_________________________________________________________________________________*/
 void HumainVsCPUMaxPions()
 {
 	plateau p;
 	int tour=2,Point1=0,Point2=0; 
-
-	//demandeDIM_MAX();
    
 	initialiserPlateau(p);
 	afficherPlateau(p); 
 
-	do
+	while(!partieTerminee(p))
 	{ 
 		if((tour%2)==0)
 			tourJoueur(p,1);
 		else
 			tourCPUMaxPions(p,2);
 		tour++;
-	}while(!partieTerminee(p));
+	}
 
         printf("\n\n\n\n La Partie est terminee !\n");
         comptePions(p,&Point1,&Point2);
         printf("Le score est : Joueur %d - Ordi %d\n",Point1,Point2);
-		videStdin();
 }
-<<<<<<< HEAD
 /*_________________________________________________________________________*/
 void HumainVsCPUMinOptions()
 {
@@ -88,7 +79,6 @@ void HumainVsCPUMinOptions()
         printf("\n\n\n\n La Partie est terminee !\n");
         comptePions(p,&Point1,&Point2);
         printf("Le score est :\nJoueur : %d\nOrdinateur : %d\n",Point1,Point2);
-		videStdin();
 }
 /*_________________________________________________________________________*/
 void HumainVsCPURandom()
@@ -116,57 +106,69 @@ void HumainVsCPURandom()
 }
 /*____________________________________________________________________________*/
 void CPUVsCPU(int niveauOrdi1, int niveauOrdi2)
-=======
-
-
-
-void joueJoueurContreOrdiAleatoire()
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
 {
-   plateau p;  
-   int tour=2,Point1=0,Point2=0; 
+	plateau p;  
+	int Point1=0,Point2=0;
+	char *niveau1, *niveau2;
 
-   initialiserPlateau(p);
-   afficherPlateau(p); 
-         
+	initialiserPlateau(p);
+	afficherPlateau(p); 
+
+	switch(niveauOrdi1)
+		{
+			case 1:
+				niveau1="Random";
+				break;
+			case 2:
+				niveau1="MaxPions";
+				break;
+			case 3:
+				niveau1="MinOptions";
+				break;
+		}
+		switch(niveauOrdi2)
+		{
+			case 1:
+				niveau2="Random";
+				break;
+			case 2:
+				niveau2="MaxPions";
+				break;
+			case 3:
+				niveau2="MinOptions";
+				break;
+		}
 	do
 	{ 
-		if( (tour%2)==0 )
-<<<<<<< HEAD
-			switch(niveauOrdi1)
-			{
-				case 1:
-					tourCPURandom(p, 1);
-				case 2:
-					tourCPUMaxPions(p, 1);
-				case 3:
-					tourCPUMinOptions(p, 1);
-			}
-		else
-			switch(niveauOrdi2)
-			{
-				case 1:
-					tourCPURandom(p, 2);
-				case 2:
-					tourCPUMaxPions(p, 2);
-				case 3:
-					tourCPUMinOptions(p, 2);
-			}
-=======
-			tourJoueur(p,1);
-		else
-			moteurOrdiAleatoire(p,2);
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
-		tour++;
+		switch(niveauOrdi1)
+		{
+			case 1:
+				tourCPURandom(p, 1);
+				break;
+			case 2:
+				tourCPUMaxPions(p, 1);
+				break;
+			case 3:
+				tourCPUMinOptions(p, 1);
+				break;
+		}
+		switch(niveauOrdi2)
+		{
+			case 1:
+				tourCPURandom(p, 2);
+				break;
+			case 2:
+				tourCPUMaxPions(p, 2);
+				break;
+			case 3:
+				tourCPUMinOptions(p, 2);
+				break;
+		}
       
 	}while(!partieTerminee(p));
 
         printf("\n\n\n\n La Partie est terminee !\n");
         comptePions(p,&Point1,&Point2);
-<<<<<<< HEAD
-        printf("Le score est :\nOrdinateur 1 : %d\nOrdinateur 2 :  %d\n",Point1,Point2);
-=======
-        printf("Le score est: Joueur %d - Ordi %d\n",Point1,Point2);
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
+        printf("Le score est :\nOrdinateur 1 (%s) : %d\nOrdinateur 2 (%s) :  %d\n", niveau1, Point1, niveau2, Point2);
 
 }

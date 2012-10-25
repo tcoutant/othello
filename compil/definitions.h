@@ -25,7 +25,10 @@ typedef struct _Maillon {
 */
 void initialiserPlateau(plateau p);
 
-
+/*
+	Initialise toutes les cases tu tableau à une valeur selon leur placement
+*/
+void initialiserPlateauCoef(plateau p);
 
 /*
 	Affichage du plateau de jeu

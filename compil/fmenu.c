@@ -5,14 +5,10 @@
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-<<<<<<< HEAD
-#include "HumainVsHumain.h"
+#include "modeDeJeu.h"
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
-=======
-#include<time.h>
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
 
 
 /*/////////////////////////////////
@@ -104,37 +100,22 @@ int proposeEtChoixNiveauDeJeu()
    do
    {
       printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-      printf("______________________________________________________\n"); 
-      printf("|                                                     |\n");
-<<<<<<< HEAD
-      printf("|             Menu choix du niveau de jeu             |\n");
-      printf("______________________________________________________\n");
+      printf("\t______________________________________________________\n"); 
+      printf("\t|                                                     |\n");
+      printf("\t|             Menu choix du niveau de jeu             |\n");
+      printf("\t______________________________________________________\n");
       printf("\n");
-      printf(" 1 - Niveau 'Random', réponse aléatoire de l'ordinateur \n");
+      printf("\t1 - Niveau 'Random', réponse aléatoire de l'ordinateur \n");
       printf("\n");
-      printf(" 2 - Niveau 'MaxPions', l'ordinateur joue le coup qui maximise le nombre de pièces prises à l'adversaire\n");
+      printf("\t2 - Niveau 'MaxPions',\nl'ordinateur joue le coup qui maximise le nombre de pièces prises à l'adversaire\n");
       printf("\n");
-      printf(" 3 - Niveau 'MinOptions, l'ordinateur joue le coup qui minimise le nombre de possibilités de l'adversaire\n");
+      printf("\t3 - Niveau 'MinOptions,\nl'ordinateur joue le coup qui minimise le nombre de possibilités de l'adversaire\n");
       printf("\n");
-      printf(" 4 - Niveau expert, l'ordi utilise minimax\n");
+      printf("\t4 - Niveau expert, (en projet! l'ordi utilise minimax)\n");
       printf("\n\n\n\n\n\n"); 
       printf("   Faites votre choix puis appuyez sur Entrée...\n");
       scanf("%i",&niveau);
     } 	  while(niveau<1 || niveau>4);
-=======
-      printf("|              Menu choix du type de jeu             |\n");
-      printf("______________________________________________________\n");
-      printf("\n");
-      printf("         1 - à 2 joueurs \n");
-      printf("\n");
-      printf("         2 - un joueur contre l'ordinateur \n");
-      printf("\n");
-      printf("         3 - Retour au Menu Principal\n");
-      printf("\n\n\n\n\n\n"); 
-      printf("   Faite votre choix puis appuyer sur Entrée...\n");
-      scanf("%i",&mode);
-    }     while(mode<1 || mode>3);
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
    
    return niveau;
 }
@@ -157,25 +138,21 @@ int proposeEtChoixNiveauDeJeuCPUVsCPU(int num)
    do
    {
       printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-      printf("______________________________________________________\n"); 
-      printf("|                                                     |\n");
-<<<<<<< HEAD
-      printf("|             choix du niveau de l'Ordinateur %d       |\n", num);
-=======
-      printf("|             Menu choix du niveau de jeu             |\n");
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
-      printf("______________________________________________________\n");
+      printf("\t______________________________________________________\n"); 
+      printf("\t|                                                     |\n");
+      printf("\t|             choix du niveau de l'Ordinateur %d       |\n", num);
+      printf("\t______________________________________________________\n");
       printf("\n");
-      printf(" 1 - Niveau 'Random', réponse aléatoire de l'ordinateur \n");
+      printf("\t1 - Niveau 'Random', réponse aléatoire de l'ordinateur \n");
       printf("\n");
-      printf(" 2 - Niveau 'MaxPions', l'ordinateur joue le coup qui maximise le nombre de pièces prises à l'adversaire\n");
+      printf("\t2 - Niveau 'MaxPions',\nl'ordinateur joue le coup qui maximise le nombre de pièces prises à l'adversaire\n");
       printf("\n");
-      printf(" 3 - Niveau 'MinOptions, l'ordinateur joue le coup qui minimise le nombre de possibilités de l'adversaire\n");
+      printf("\t3 - Niveau 'MinOptions,\nl'ordinateur joue le coup qui minimise le nombre de possibilités de l'adversaire\n");
       printf("\n");
-      printf(" 4 - Niveau expert, l'ordi utilise minimax\n");
+      printf("\t4 - Niveau expert, (en projet! l'ordi utilise minimax)\n");
       printf("\n\n\n\n\n\n"); 
       printf("   Faites votre choix puis appuyez sur Entrée...\n");
-      scanf("%i",&niveau);
+      scanf(" %i",&niveau);
     } 	  while(niveau<1 || niveau>4);
    
    return niveau;

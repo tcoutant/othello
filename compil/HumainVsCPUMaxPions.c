@@ -5,7 +5,7 @@
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-#include "HumainVsHumain.h"
+#include "modeDeJeu.h"
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
@@ -21,9 +21,7 @@ void free_Maillons(Maillon * teteMaillon)//OK
 	if(!courantMaillon) return;
 
 	while(courantMaillon) 
-	{ 
-		printf("free maillon: %p\n",courantMaillon);
-
+	{
 		suivantMaillon=courantMaillon->suivant;
 		free(courantMaillon);
 		courantMaillon=suivantMaillon;    
@@ -139,6 +137,7 @@ void tourCPUMaxPions(plateau p, int joueur)
 	printf("Ecart retenu apres coup: %d\n",trouveCoupMaxPions(p,Coup,joueur));
 
 	joueLeCoup(p,(Coup->ligne),(Coup->colonne),joueur);
+	printf("Coup aléatoire joué par l'ordi : (%c %d)\n", 'a'+Coup->colonne, Coup->ligne+1);
 
 	free(Coup); //Liberation de la structure Coup
 	}      

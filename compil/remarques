@@ -1,8 +1,0 @@
-Quand en mode minOptions, on fait a 3, c 1, b 4, Personne n'a de possibilité pour jouer, le jeu s'arrête et le score est de 10 - 1, ce qui ne fait pas 16
-
-
-Quand on joue en mode MaxPions, si on fait toujours la première option, le jeu bug vers la fin.
-
-Régler le souci des main() qui se relancent sans arrêt, et qui font qu'on doit quitter plein de fois.
-
-En mode Ordi vs Ordi, quand l'ordi 1 n'est pas de niveau 3, le score est toujours de 6-0
