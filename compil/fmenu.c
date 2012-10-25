@@ -79,7 +79,7 @@ int proposeEtChoixModeDeJeu()
 		printf("\n\n\n\n\n\n"); 
 		printf("   Faites votre choix puis appuyez sur Entrée...\n");
 		scanf("%i",&mode);
-    }while(mode<1 || mode>3);
+    }while(mode<1 || mode>4);
    
    return mode;
 }
