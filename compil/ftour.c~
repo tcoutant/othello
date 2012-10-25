@@ -1,18 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "HumainVsHumain.h"
 #include "definitions.h"
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-<<<<<<< HEAD
-#include "HumainVsHumain.h"
-#include "HumainVsCPURandom.h"
-#include "HumainVsCPUMaxPions.h"
-#include "HumainVsCPUMinOptions.h"
-=======
 #include<time.h>
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
 
 
 /*
@@ -127,7 +121,7 @@ int donneTousLesCoupsValides(plateau p, int joueur, Maillon ** teteMaillon)
                  
                  if(!newMaillon)
                  { 
-                    printf("Allocation impossible de 'newMaillon' dans 'donneTousLesCoupsValides'\n");
+                    printf("malloc null: newMaillon,donneTousLesCoupsValides \n");
                     exit(1);              
                  }
                  
@@ -158,7 +152,7 @@ void saisiUnCoup(int joueur, int * NumLigne, int * NumColonne)
 {
       char tmp[4];
 
-      printf(" Saisissez une case pour le joueur numero %d (au format 'a 1')\n puis appuyez sur Entrée\n",joueur);
+      printf(" Veuillez entrez une case pour le joueur numero %d ( au format a 1 )\n puis appuyer sur Entree\n",joueur);
 	videStdin();
       fgets(tmp, sizeof tmp, stdin);
 
@@ -186,7 +180,7 @@ char * donneStringCoupsValides(plateau p, int joueur)
    coups=(char *)malloc(sizeof(char)*1000);
    if(!coups)
    {
-      printf("Allocation impossible de 'coups' dans 'donneStringCoupsValides'\n"); 
+      printf("Alloc:null coups donneStringCoupsValides\n"); 
       exit(1);
    }
    
@@ -238,9 +232,14 @@ void tourJoueur(plateau p, int joueur)
 {
    int testL=0;
    int testC=0;
+   char c;
    
    if(!existeCoupPourJoueur(p,joueur)) 
-      printf(" Le joueur numéro %d doit passer son tour !\n",joueur);
+   {
+      printf(" Le joueur numéro %d doit passer son tour ! \n Appuyez sur une touche pour continuer\n",joueur);
+      
+      fgets(&c,1,stdin);
+   } 
    else
    {
       do 
@@ -267,10 +266,42 @@ void tourJoueur(plateau p, int joueur)
 /*__________________________________________________________________________*/
 
 
+//////////////Thomas -> Maximise le nombre de pions
 
-/*
-	Fonction ui dupliue un plateau, pour pouvoir tester des coups.
-*/
+void free_Maillons(Maillon * teteMaillon)//OK
+{
+	Maillon * suivantMaillon;
+	Maillon * courantMaillon;
+	courantMaillon=teteMaillon;
+   
+	if(!courantMaillon) return;
+
+	while(courantMaillon) 
+	{ 
+		printf("free maillon: %p\n",courantMaillon);
+
+		suivantMaillon=courantMaillon->suivant;
+		free(courantMaillon);
+		courantMaillon=suivantMaillon;    
+     
+	}
+}
+
+
+int ecartPions(plateau p) 
+{
+	int pion1,pion2;
+	pion2=0;
+	pion1=0;
+
+	comptePions(p,&pion1,&pion2);
+
+	printf("Nombre Pions Joueur1:%d - Joueur2:%d\n",pion1,pion2);
+	
+	return (pion1-pion2);  
+}
+
+
 void dupliPlateau(plateau p, plateau * dupli)//OK
 {  
 	int i,j;
@@ -278,8 +309,6 @@ void dupliPlateau(plateau p, plateau * dupli)//OK
 	for(i=0;i<DIM_MAX;i++)
 		for(j=0;j<DIM_MAX;j++)
       (*dupli)[i][j]=p[i][j];  
-<<<<<<< HEAD
-=======
 } 
 
 int trouveCoupMaxPions(plateau p, StrCoup * Coup,int joueur)
@@ -375,7 +404,6 @@ void tourCPU(plateau p, int joueur)
 
 	free(Coup); //Liberation de la structure Coup
 	}      
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
 }
 
 //////// thierry -> fonction qui repond aleatoirement
@@ -423,7 +451,7 @@ void moteurOrdiAleatoire(plateau p, int joueur)
 	/* joue le coup choisi aleatoirement */
 	joueLeCoup(p,courantMaillon->coup.ligne,courantMaillon->coup.colonne,joueur);
 	
-	free_Maillons(teteMaillon);//Libération de tout les maillons        
+	freeMaillons(teteMaillon);//Libération de tout les maillons        
 	}    
 }
 

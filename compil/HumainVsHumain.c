@@ -5,6 +5,7 @@
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
+<<<<<<< HEAD
 #include "HumainVsHumain.h"
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
@@ -12,6 +13,9 @@
 
 
 
+=======
+#include<time.h>
+>>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
 
 void HumainVsHumain()
 {
@@ -62,6 +66,7 @@ void HumainVsCPUMaxPions()
         printf("Le score est : Joueur %d - Ordi %d\n",Point1,Point2);
 		videStdin();
 }
+<<<<<<< HEAD
 /*_________________________________________________________________________*/
 void HumainVsCPUMinOptions()
 {
@@ -111,6 +116,12 @@ void HumainVsCPURandom()
 }
 /*____________________________________________________________________________*/
 void CPUVsCPU(int niveauOrdi1, int niveauOrdi2)
+=======
+
+
+
+void joueJoueurContreOrdiAleatoire()
+>>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
 {
    plateau p;  
    int tour=2,Point1=0,Point2=0; 
@@ -121,6 +132,7 @@ void CPUVsCPU(int niveauOrdi1, int niveauOrdi2)
 	do
 	{ 
 		if( (tour%2)==0 )
+<<<<<<< HEAD
 			switch(niveauOrdi1)
 			{
 				case 1:
@@ -140,12 +152,21 @@ void CPUVsCPU(int niveauOrdi1, int niveauOrdi2)
 				case 3:
 					tourCPUMinOptions(p, 2);
 			}
+=======
+			tourJoueur(p,1);
+		else
+			moteurOrdiAleatoire(p,2);
+>>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
 		tour++;
       
 	}while(!partieTerminee(p));
 
         printf("\n\n\n\n La Partie est terminee !\n");
         comptePions(p,&Point1,&Point2);
+<<<<<<< HEAD
         printf("Le score est :\nOrdinateur 1 : %d\nOrdinateur 2 :  %d\n",Point1,Point2);
+=======
+        printf("Le score est: Joueur %d - Ordi %d\n",Point1,Point2);
+>>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
 
 }

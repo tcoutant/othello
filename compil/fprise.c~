@@ -1,20 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "HumainVsHumain.h"
 #include "definitions.h"
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-<<<<<<< HEAD
-#include "HumainVsHumain.h"
-#include "HumainVsCPURandom.h"
-#include "HumainVsCPUMaxPions.h"
-#include "HumainVsCPUMinOptions.h"
-=======
-#include<time.h>
 
 
->>>>>>> f568341fc38d57ba1e0a6032acf84599ca711822
+
 
 
 /*
@@ -25,6 +19,7 @@ int renvoieContenuCase(plateau p, int NumLigne, int NumColonne)
 	return (p[NumLigne][NumColonne]);
 }
 /*_______________________________________________________________________________*/
+
 
 
 /*
