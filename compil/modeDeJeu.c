@@ -9,7 +9,7 @@
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
-
+#include "HumainVsCPUMaxValeurCase.h"
 
 
 
@@ -105,6 +105,32 @@ void HumainVsCPURandom()
 
 }
 /*____________________________________________________________________________*/
+void HumainVsCPUMaxValeurCase()
+{
+   plateau p;  
+   int tour=2,Point1=0,Point2=0; 
+
+   initialiserPlateau(p);
+   afficherPlateau(p); 
+         
+	do
+	{ 
+		if( (tour%2)==0 )
+			tourJoueur(p,1);
+		else
+			tourCPUMaxValeurCase(p,2);
+		tour++;
+      
+	}while(!partieTerminee(p));
+
+        printf("\n\n\n\n La Partie est terminee !\n");
+        comptePions(p,&Point1,&Point2);
+        printf("Le score est :\nJoueur : %d\nOrdinateur : %d\n",Point1,Point2);
+}
+
+
+/*____________________________________________________________________________*/
+
 void CPUVsCPU(int niveauOrdi1, int niveauOrdi2)
 {
 	plateau p;  
@@ -125,6 +151,9 @@ void CPUVsCPU(int niveauOrdi1, int niveauOrdi2)
 			case 3:
 				niveau1="MinOptions";
 				break;
+			case 4:
+				niveau1="MaxValeurCase";
+				break;
 		}
 		switch(niveauOrdi2)
 		{
@@ -136,6 +165,9 @@ void CPUVsCPU(int niveauOrdi1, int niveauOrdi2)
 				break;
 			case 3:
 				niveau2="MinOptions";
+				break;
+			case 4:
+				niveau1="MaxValeurCase";
 				break;
 		}
 	do
@@ -151,6 +183,9 @@ void CPUVsCPU(int niveauOrdi1, int niveauOrdi2)
 			case 3:
 				tourCPUMinOptions(p, 1);
 				break;
+			case 4:
+				tourCPUMaxValeurCase(p, 1);
+				break;
 		}
 		switch(niveauOrdi2)
 		{
@@ -162,6 +197,9 @@ void CPUVsCPU(int niveauOrdi1, int niveauOrdi2)
 				break;
 			case 3:
 				tourCPUMinOptions(p, 2);
+				break;
+			case 4:
+				tourCPUMaxValeurCase(p, 2);
 				break;
 		}
       

@@ -9,6 +9,7 @@
 #include "HumainVsCPURandom.h"
 #include "HumainVsCPUMaxPions.h"
 #include "HumainVsCPUMinOptions.h"
+#include "HumainVsCPUMaxValeurCase.h"
 
 /*
 	Compte, à partir d'un plateau et d'un joueur passé en paramètre, le nombre de coups possible pour ce joueur sur le plateau
