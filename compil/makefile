@@ -1,4 +1,4 @@
-all : definitions.o fmenu.o fprise.o ftour.o HumainVsHumain.o main.o projet
+all : definitions.o fmenu.o fprise.o ftour.o HumainVsCPUMaxPions.o HumainVsCPUMinOptions.o HumainVsCPURandom.o HumainVsHumain.o main.o projet
 
 definitions.o : definitions.c
 	gcc -c -Wall definitions.c
@@ -12,6 +12,15 @@ fprise.o : fprise.c
 ftour.o : ftour.c
 	gcc -c -Wall ftour.c
 
+HumainVsCPUMaxPions.o : HumainVsCPUMaxPions.c
+	gcc -c -Wall HumainVsCPUMaxPions.c
+
+HumainVsCPUMinOptions.o : HumainVsCPUMinOptions.c
+	gcc -c -Wall HumainVsCPUMinOptions.c
+
+HumainVsCPURandom.o : HumainVsCPURandom.c
+	gcc -c -Wall HumainVsCPURandom.c
+
 HumainVsHumain.o : HumainVsHumain.c
 	gcc -c -Wall HumainVsHumain.c
 
@@ -19,10 +28,10 @@ main.o : main.c
 	gcc -c -Wall main.c
 
 projet : definitions.o fmenu.o fprise.o ftour.o HumainVsHumain.o main.o
-	gcc -o projet definitions.o fmenu.o fprise.o ftour.o HumainVsHumain.o main.o
+	gcc -o projet definitions.o fmenu.o fprise.o ftour.o HumainVsCPUMaxPions.o HumainVsCPUMinOptions.o HumainVsCPURandom.o HumainVsHumain.o main.o
 
 clean :
-	rm *.o
+	rm *.o *~
 
 
 

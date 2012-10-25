@@ -8,7 +8,8 @@ int proposeEtChoixMenu();
 //Si "Jouer" est choisi, choix entre "Humain vs Humain",  "Humain vs Ordi" et "Ordi vs Ordi"
 int proposeEtChoixModeDeJeu();
 
-//Si "Humain vs Ordi" ou "Ordi vs Ordi" est choisi, choix entre différents niveaux
+//Si "Humain vs Ordi" est choisi, choix entre différents niveaux
 int proposeEtChoixNiveauDeJeu();
 
-
+//Si "Ordi vs Ordi" est choisi, menu de choix du niveau des ordis
+int proposeEtChoixNiveauDeJeuCPUVsCPU(int num);

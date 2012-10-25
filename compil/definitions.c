@@ -5,7 +5,14 @@
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
+#include "HumainVsHumain.h"
+#include "HumainVsCPURandom.h"
+#include "HumainVsCPUMaxPions.h"
+#include "HumainVsCPUMinOptions.h"
 
+/*
+	Les définitions des structures sont dans le fichier "definitions.h"
+*/
 
 /*
 	Initialise toutes les cases tu tableau à 0, sauf les quatre du centre

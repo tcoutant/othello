@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "HumainVsHumain.h"
 #include "definitions.h"
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
-
-
-
+#include "HumainVsHumain.h"
+#include "HumainVsCPURandom.h"
+#include "HumainVsCPUMaxPions.h"
+#include "HumainVsCPUMinOptions.h"
 
 
 /*
@@ -19,7 +19,6 @@ int renvoieContenuCase(plateau p, int NumLigne, int NumColonne)
 	return (p[NumLigne][NumColonne]);
 }
 /*_______________________________________________________________________________*/
-
 
 
 /*

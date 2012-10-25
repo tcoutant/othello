@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "HumainVsHumain.h"
 #include "definitions.h"
 #include "fmenu.h"
 #include "fprise.h"
 #include "ftour.h"
+#include "HumainVsHumain.h"
+#include "HumainVsCPURandom.h"
+#include "HumainVsCPUMaxPions.h"
+#include "HumainVsCPUMinOptions.h"
 
 
 /*
@@ -120,7 +123,7 @@ int donneTousLesCoupsValides(plateau p, int joueur, Maillon ** teteMaillon)
                  
                  if(!newMaillon)
                  { 
-                    printf("malloc null: newMaillon,donneTousLesCoupsValides \n");
+                    printf("Allocation impossible de 'newMaillon' dans 'donneTousLesCoupsValides'\n");
                     exit(1);              
                  }
                  
@@ -151,7 +154,7 @@ void saisiUnCoup(int joueur, int * NumLigne, int * NumColonne)
 {
       char tmp[4];
 
-      printf(" Veuillez entrez une case pour le joueur numero %d ( au format a 1 )\n puis appuyer sur Entree\n",joueur);
+      printf(" Saisissez une case pour le joueur numero %d (au format 'a 1')\n puis appuyez sur Entrée\n",joueur);
 	videStdin();
       fgets(tmp, sizeof tmp, stdin);
 
@@ -179,7 +182,7 @@ char * donneStringCoupsValides(plateau p, int joueur)
    coups=(char *)malloc(sizeof(char)*1000);
    if(!coups)
    {
-      printf("Alloc:null coups donneStringCoupsValides\n"); 
+      printf("Allocation impossible de 'coups' dans 'donneStringCoupsValides'\n"); 
       exit(1);
    }
    
@@ -231,14 +234,9 @@ void tourJoueur(plateau p, int joueur)
 {
    int testL=0;
    int testC=0;
-   char c;
    
    if(!existeCoupPourJoueur(p,joueur)) 
-   {
-      printf(" Le joueur numéro %d doit passer son tour ! \n Appuyez sur une touche pour continuer\n",joueur);
-      
-      fgets(&c,1,stdin);
-   } 
+      printf(" Le joueur numéro %d doit passer son tour !\n",joueur);
    else
    {
       do 
@@ -265,42 +263,10 @@ void tourJoueur(plateau p, int joueur)
 /*__________________________________________________________________________*/
 
 
-//////////////Thomas -> Maximise le nombre de pions
 
-void free_Maillons(Maillon * teteMaillon)//OK
-{
-	Maillon * suivantMaillon;
-	Maillon * courantMaillon;
-	courantMaillon=teteMaillon;
-   
-	if(!courantMaillon) return;
-
-	while(courantMaillon) 
-	{ 
-		printf("free maillon: %p\n",courantMaillon);
-
-		suivantMaillon=courantMaillon->suivant;
-		free(courantMaillon);
-		courantMaillon=suivantMaillon;    
-     
-	}
-}
-
-
-int ecartPions(plateau p) 
-{
-	int pion1,pion2;
-	pion2=0;
-	pion1=0;
-
-	comptePions(p,&pion1,&pion2);
-
-	printf("Nombre Pions Joueur1:%d - Joueur2:%d\n",pion1,pion2);
-	
-	return (pion1-pion2);  
-}
-
-
+/*
+	Fonction ui dupliue un plateau, pour pouvoir tester des coups.
+*/
 void dupliPlateau(plateau p, plateau * dupli)//OK
 {  
 	int i,j;
@@ -308,99 +274,4 @@ void dupliPlateau(plateau p, plateau * dupli)//OK
 	for(i=0;i<DIM_MAX;i++)
 		for(j=0;j<DIM_MAX;j++)
       (*dupli)[i][j]=p[i][j];  
-} 
-
-int trouveCoupMaxPions(plateau p, StrCoup * Coup,int joueur)
-{
-	int equart_tmp,equart;
-	int Ligne,Colonne;
-
-
-	plateau tmp;//Plateau temporaire pour tester les differents coups
-
-	Maillon * teteMaillon;//Maillon pour avoir les coupsValides
-	Maillon * tmpMaillon;//Maillon pour parcourir les coupsValides
-   
-  
-	equart=-70;
-	Coup->joueur=joueur;
-
-	teteMaillon=NULL; 
-
-	donneTousLesCoupsValides(p,joueur,&teteMaillon);//Rentre tout les coup valides dans la liste chainée
-	tmpMaillon=teteMaillon;//Pour pouvoir parcourir la chaine
-
-	 /*********************************\
-   	|   Parcours de la liste chainée   |
-	\*********************************/
-   
-	/* Tant que le maillon est pas null */
-	while(tmpMaillon!=NULL) 
-	{
-       /* Duplication du Plateau*/
-		dupliPlateau(p,&tmp);
-
-		Ligne = tmpMaillon->coup.ligne;
-		Colonne = tmpMaillon->coup.colonne;         
- 
-		printf("Test de la position: (%c %d)\n",Colonne+'a',Ligne+1);
-       
-		tmp[Ligne][Colonne]=joueur;
-		retournePions(joueur,tmp,Ligne,Colonne);
-         
-       // afficherPlateau(tmp);
-       
-
-		equart_tmp=ecartPions(tmp);
-
-		printf("resultat: equart:%d equart_tmp:%d\n",equart,equart_tmp);
-
-		if(equart < equart_tmp)
-		{
-			printf("Ce coup implique un plus gros ecart\n");
-			equart=equart_tmp;
-			Coup->ligne=Ligne;
-			Coup->colonne=Colonne;
-			printf("\n");
-		}
-		else 
-			printf("\n");
-
-		/* Passage du maillon suivant */
-		tmpMaillon = tmpMaillon->suivant;
-	}; 
-
-   free_Maillons(teteMaillon); //Liberation de tout les maillons
-	
-	return equart;   //renvoie le plus grand nombre d'equart de point possible entre les deux joueurs
-}
-
-
-void tourCPU(plateau p, int joueur)
-{
-	char c;
-	StrCoup * Coup;   
-
-	if(existeCoupPourJoueur(p, joueur) == 0) 
-	{
-		printf("Vous devez passer, joueur numero %d ! \nAppuyer sur une touche pour continuer\n",joueur);
-   
-		fgets(&c,1,stdin);
-		videStdin();
-	} 
-	else
-	{
-		Coup=(StrCoup *) malloc(sizeof(StrCoup)); //Allocation liste chainé
-
-		if(Coup == NULL)
-			printf("Allocation de memoire dans tourCPU impossible\n"); 
-
-	/* Retient le meilleur coup possible dans la variable Coup */
-
-	printf("Equart retenu apres coup: %d\n",trouveCoupMaxPions(p,Coup,joueur));
-
-	joueLeCoup(p,(Coup->ligne),(Coup->colonne),joueur);
-
-	free(Coup); //Liberation de la structure Coup
-	}      
 }
